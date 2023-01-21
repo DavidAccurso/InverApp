@@ -1,0 +1,55 @@
+<button mat-raised-button (click)="refresh()">refresh data</button>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 table" matSort>
+
+  <!-- ID COLUMN -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> ID. </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <!-- Asset COLUMN -->
+  <ng-container matColumnDef="asset">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Asset </th>
+    <td mat-cell *matCellDef="let element"> {{element.asset}} </td>
+  </ng-container>
+
+  <!-- Date COLUMN -->
+  <ng-container matColumnDef="date">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
+    <td mat-cell *matCellDef="let element"> {{element.date | date}} </td>
+  </ng-container>
+
+  <!-- Asset COLUMN -->
+  <ng-container matColumnDef="unitValue">
+    <th mat-header-cell *matHeaderCellDef> Unit Value </th>
+    <td mat-cell *matCellDef="let element"> {{element.unitValue}} </td>
+  </ng-container>
+
+  <!-- Asset COLUMN -->
+  <ng-container matColumnDef="nominals">
+    <th mat-header-cell *matHeaderCellDef> Nominals </th>
+    <td mat-cell *matCellDef="let element"> {{element.nominals}} </td>
+  </ng-container>
+
+  <!-- Asset COLUMN -->
+  <ng-container matColumnDef="buyPriceArs">
+    <th mat-header-cell *matHeaderCellDef> Buy Price Ars </th>
+    <td mat-cell *matCellDef="let element"> {{element.buyPriceArs}} </td>
+  </ng-container>
+
+  <!-- Asset COLUMN -->
+  <ng-container matColumnDef="buyPriceUsd">
+    <th mat-header-cell *matHeaderCellDef> Buy Price Usd </th>
+    <td mat-cell *matCellDef="let element"> {{element.buyPriceUsd}} </td>
+  </ng-container>
+
+  <!-- Asset COLUMN -->
+  <ng-container matColumnDef="arsUsdRate">
+    <th mat-header-cell *matHeaderCellDef> Ars Usd Rate </th>
+    <td mat-cell *matCellDef="let element"> {{element.arsUsdRate}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

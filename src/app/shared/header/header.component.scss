@@ -1,0 +1,20 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    width: 100%!important;
+
+    .left-items {
+        // align-items: flex-start;
+        justify-content: flex-start;
+    }
+    .right-items {
+        // align-items: flex-end;
+        justify-content: flex-end;
+        button {
+            margin-right: 150px;
+        }
+    }
+    .expander {
+        width: 900px;
+    }
+}

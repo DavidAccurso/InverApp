@@ -1,0 +1,25 @@
+<div class="container">
+    <h1>Investments</h1>
+    <app-table [dataSource]="dataSource">
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{ row.id }} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="asset">
+            <mat-header-cell *matHeaderCellDef> Asset </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{ row.asset }} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="date">
+            <mat-header-cell *matHeaderCellDef> Date </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{ row.date }} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="buyPriceArs">
+            <mat-header-cell *matHeaderCellDef> Buy Price ARS </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{ row.buyPriceArs }} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="buyPriceUsd">
+            <mat-header-cell *matHeaderCellDef> Buy Price USD </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{ row.buyPriceUsd }} </mat-cell>
+        </ng-container>
+    </app-table>
+</div>

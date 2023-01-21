@@ -1,0 +1,90 @@
+<div class="container">
+  <form [formGroup]="addInvestmentForm" (ngSubmit)="onSubmit()">
+
+    <mat-form-field appearance="fill">
+      <mat-label>Activo</mat-label>
+      <input type="text" matInput [formControl]="Asset">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Fecha</mat-label>
+      <input matInput [matDatepicker]="picker" [formControl]="Date">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="exchangeRate">
+      <mat-label>Ars/Usd</mat-label>
+      <input type="number" matInput [formControl]="ArsUsdRate">
+    </mat-form-field>
+
+    <button type="button" mat-raised-button (click)="setArsUsdTodayRate()">Get</button>
+
+    <div class="radio-group">
+      <div class="slider-toggle">
+        <mat-label>Indicar valor en:</mat-label>
+        <mat-slide-toggle (change)="changeToUsd()">USD</mat-slide-toggle>
+      </div>
+
+      <mat-radio-group [formControl]="InvestmentType">
+        <mat-label>Tipo de activo:</mat-label>
+        <mat-radio-button value="fixed">Fixed</mat-radio-button>
+        <mat-radio-button value="equitie">Equitie</mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <!--  Common -->
+    <mat-form-field appearance="fill">
+      <mat-label>Nominales</mat-label>
+      <input type="number" matInput [formControl]="Nominals" (change)="autocompleteNominalsValues()">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Valor unitario</mat-label>
+      <input type="number" matInput [formControl]="UnitValue" (change)="autocompleteNominalsValues()">
+    </mat-form-field>
+
+    <div class="values">
+      <mat-form-field appearance="fill">
+        <mat-label>Valor inicial</mat-label>
+        <input matInput type="number" [formControl]="ArsBoughtPrice" (blur)="autocompleteOtherCurrency()" (change)="autocompleteNominalsValues()">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Valor inicial USD</mat-label>
+        <input matInput type="number" [formControl]="UsdBoughtPrice" (blur)="autocompleteOtherCurrency()">
+      </mat-form-field>
+    </div>
+
+    <!-- RENTA VARIABLE -->
+    <div class="equitie" *ngIf="isEquitie()">
+      <mat-form-field appearance="fill">
+        <mat-label>Dividendos</mat-label>
+        <input type="number" matInput [formControl]="Dividends">
+      </mat-form-field>
+    </div>
+
+    <!-- RENTA FIJA -->
+    <div class="fixed" *ngIf="!isEquitie()">
+      <div class="fixed-values">
+        <mat-form-field appearance="fill">
+          <mat-label>Interes</mat-label>
+          <input type="number" placeholder="%" matInput [formControl]="Rate">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Duracion</mat-label>
+          <input type="number" matInput [formControl]="Duration">
+        </mat-form-field>
+      </div>
+    </div>
+
+    <button 
+    type="submit" 
+    mat-raised-button 
+    color="primary" 
+    [disabled]="!addInvestmentForm.valid">Primary</button>
+  </form>
+
+</div>
